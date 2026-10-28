@@ -2,14 +2,15 @@ FROM alpine:latest
 
 RUN apk add --no-cache lua5.3 lua-filesystem lua-http
 
-COPY updateip.lua /
-
 VOLUME /extip
 
-RUN /usr/local/bin/lua /updateip.lua
-RUN echo ' */5  *  *  *  * /usr/local/bin/lua /updateip.lua' >> /etc/crontabs/root
+WORKDIR /app
 
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-  CMD pgrep crond || exit 1
+COPY updateip.lua .
+#RUN /usr/local/bin/lua /updateip.lua
+#RUN echo ' */5  *  *  *  * /usr/local/bin/lua /updateip.lua' >> /etc/crontabs/root
 
-ENTRYPOINT ["/usr/sbin/crond", "-f"]
+#HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+#  CMD pgrep crond || exit 1
+
+ENTRYPOINT ["lua", "/app/updateip.lua"]
