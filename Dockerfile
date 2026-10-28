@@ -3,8 +3,9 @@ FROM alpine:latest
 RUN apk add --no-cache lua5.3 lua-filesystem lua-http
 
 COPY updateip.lua /
-COPY main.lua /
 
 VOLUME /extip
 
-ENTRYPOINT ['/main.lua']
+RUN echo ' */5  *  *  *  * /usr/local/bin/lua5.3 /updateip.lua' >> /etc/crontabs/root
+
+ENTRYPOINT ["/usr/sbin/crond", "-f"]
