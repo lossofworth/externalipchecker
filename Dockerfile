@@ -6,6 +6,7 @@ COPY updateip.lua /
 
 VOLUME /extip
 
+RUN lua /updateip.lua
 RUN echo ' */5  *  *  *  * /usr/local/bin/lua /updateip.lua' >> /etc/crontabs/root
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
