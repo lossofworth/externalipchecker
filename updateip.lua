@@ -18,12 +18,14 @@ end
 local http = require "socket.http"
 local result, status = http.request("http://api.ipify.org/")
 if status == "200" then
-    print(result, status)
-    fileip = readall(ext_ip_file)
-    newip = string.gsub(result, "%s+", "")
-    if fileip ~= newip then
-        write(ext_ip_file)
-    end
+  fileip = readall(ext_ip_file)
+  print("IP on file: ", fileip)
+  newip = string.gsub(result, "%s+", "")
+  pirnt("IP from web: ", newip)
+  if fileip ~= newip then
+    write(ext_ip_file)
+  end
+  write("updated","this file is touched when updated")
 else
     print("Failed to get external IP")
 end
