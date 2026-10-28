@@ -6,7 +6,7 @@ VOLUME /extip
 
 WORKDIR /app
 
-COPY --no-cache updateip.lua .
+COPY updateip.lua .
 #RUN /usr/local/bin/lua /updateip.lua
 #RUN echo ' */5  *  *  *  * /usr/local/bin/lua /updateip.lua' >> /etc/crontabs/root
 
