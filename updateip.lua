@@ -1,4 +1,4 @@
-global ext_ip_file = '/extip/EXT_IP'
+global ext_ip_file = "/extip/EXT_IP"
 
 function readall(filename)
   local fh = assert(io.open(filename, "rb"))
