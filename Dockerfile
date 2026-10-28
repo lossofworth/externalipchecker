@@ -13,4 +13,4 @@ COPY updateip.lua .
 #HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
 #  CMD pgrep crond || exit 1
 
-ENTRYPOINT ["lua", "/app/updateip.lua"]
+ENTRYPOINT ["lua5.3", "/app/updateip.lua"]
