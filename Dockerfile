@@ -6,7 +6,7 @@ COPY updateip.lua /
 
 VOLUME /extip
 
-RUN echo ' */5  *  *  *  * /usr/local/bin/lua5.3 /updateip.lua' >> /etc/crontabs/root
+RUN echo ' */5  *  *  *  * /usr/local/bin/lua /updateip.lua' >> /etc/crontabs/root
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
   CMD pgrep crond || exit 1
