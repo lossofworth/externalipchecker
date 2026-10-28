@@ -25,7 +25,6 @@ if status == "200" then
   if fileip ~= newip then
     write(ext_ip_file)
   end
-  write("updated","this file is touched when updated")
 else
     print("Failed to get external IP")
 end
