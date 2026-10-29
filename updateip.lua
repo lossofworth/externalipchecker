@@ -23,7 +23,7 @@ if status:get(":status") == "200" then
   local newip = string.gsub(result, "%s+", "")
   print("IP from web: ", newip)
   if fileip ~= newip then
-    write(ext_ip_file)
+    write(ext_ip_file, newip)
   end
 else
     print("Failed to get external IP")
