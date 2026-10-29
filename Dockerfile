@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache lua5.3 lua-filesystem lua-http
+RUN apk add --no-cache lua lua-filesystem lua-http
 
 VOLUME /extip
 
@@ -13,4 +13,4 @@ COPY updateip.lua .
 #HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
 #  CMD pgrep crond || exit 1
 
-ENTRYPOINT ["lua5.3", "/app/updateip.lua"]
+ENTRYPOINT ["lua", "/app/updateip.lua"]
