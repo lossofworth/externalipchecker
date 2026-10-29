@@ -15,4 +15,5 @@ RUN ls /usr/local/bin
 #HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
 #  CMD pgrep crond || exit 1
 
-ENTRYPOINT ["lua", "/app/updateip.lua"]
+#ENTRYPOINT ["lua", "/app/updateip.lua"]
+CMD ["/bin/bash"]
