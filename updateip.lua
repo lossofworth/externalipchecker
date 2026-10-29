@@ -14,13 +14,13 @@ function write(filename, contents)
   fh:close()
 end
 
--- local url = require "socket.url"
-local http = require "socket.http"
-local result, status = http.request("http://api.ipify.org/")
-if status == "200" then
-  fileip = readall(ext_ip_file)
+local request = require("http.request")
+local status, stream = request.new_from_uri("http://api.ipify.org/"):go()
+if status:get(":status") == "200" then
+  local fileip = readall(ext_ip_file)
   print("IP on file: ", fileip)
-  newip = string.gsub(result, "%s+", "")
+  local result = stream:get_body_as_string()
+  local newip = string.gsub(result, "%s+", "")
   pirnt("IP from web: ", newip)
   if fileip ~= newip then
     write(ext_ip_file)
