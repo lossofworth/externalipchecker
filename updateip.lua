@@ -21,7 +21,7 @@ if status:get(":status") == "200" then
   print("IP on file: ", fileip)
   local result = stream:get_body_as_string()
   local newip = string.gsub(result, "%s+", "")
-  pirnt("IP from web: ", newip)
+  print("IP from web: ", newip)
   if fileip ~= newip then
     write(ext_ip_file)
   end
