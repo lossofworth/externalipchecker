@@ -16,4 +16,4 @@ RUN ls /usr/local/bin
 #  CMD pgrep crond || exit 1
 
 #ENTRYPOINT ["lua", "/app/updateip.lua"]
-CMD ["/bin/bash"]
+CMD ["/usr/bin/bash"]
