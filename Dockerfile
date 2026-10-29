@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache lua lua-filesystem lua-http
+RUN apk add --no-cache lua5.5 lua-filesystem lua-http
 
 VOLUME /extip
 
